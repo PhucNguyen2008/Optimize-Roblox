@@ -1,0 +1,5 @@
+{
+"DFIntMemoryUtilityCurveBaseHundrethsPercent": "10000",
+"DFIntMemoryUtilityCurveNumSegments": "100",
+"DFIntMemoryUtilityCurveTotalMemoryReserve": "0",
+}

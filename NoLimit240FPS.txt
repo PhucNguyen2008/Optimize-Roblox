@@ -1,0 +1,3 @@
+{
+  "FFlagTaskSchedulerLimitTargetFpsTo2402": "False"
+}
