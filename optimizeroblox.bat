@@ -5,7 +5,7 @@ color 0A
 :menu
 cls
 echo **********************************************************************
-echo *                     OPTIMIZE ROBLOX - NGUYEN ROBLOX TV             *
+echo *                     OPTIMIZE ROBLOX - NGUYEN ROBLOX TV              *
 echo **********************************************************************
 echo.
 echo [1] Bloxstrap Things (Download Bloxstrap, FastFlag)
@@ -15,7 +15,7 @@ echo [4] Change DNS
 echo [5] Optimize Network
 echo [6] Create Restore Point
 echo [7] Set Roblox to High Performance
-echo [8] Tweaker (Require Administrator privileges)
+echo [8] Tweaker
 echo [0] Exit
 echo.
 set /p choice="Choose an option: "
@@ -43,7 +43,7 @@ echo [4] No Limit 240 FPS FFLAG
 echo [5] Memory Util FFLAG
 echo [6] Force Roblox Use GPU FFLAG
 echo.
-echo [7] Stoof's FastFlags Settings V19
+echo [7] Stoof's FastFlags Settings V20
 echo ======================================
 echo [8] Black Dough Tutorial
 echo [9] My Official Channel
@@ -370,52 +370,64 @@ echo *             Tweaker(Require Administrator privileges)              *
 echo **********************************************************************
 echo.
 echo [1] Backup Registry
-echo [2] Disable Windows Defender
+echo [2] Disable Windows Defender !!! NOT RECOMMEND !!!
 echo [3] Disable Telemetry
 echo [4] Disable Cortana
-echo [5] Disable System Restore
-echo [6] Optimize Virtual Memory
-echo [7] Disable Windows Automatic Updates
-echo [8] Disable Windows Search Service
-echo [9] Disable Visual Effects
-echo [10] Increase TCP Connections
-echo [11] Disable Hibernation
-echo [12] Turn Off Windows Defender Real-Time Protection
-echo [13] Disable Windows Error Reporting
-echo [14] Disable USB Autorun
-echo [15] Disable Windows Store
-echo [16] Speed Up Folder Browsing
-echo [17] Optimize Internet Connection (TCP)
-echo [18] Speed Up Boot Time
-echo [19] Disable Task Scheduler
-echo [20] Disable UAC
-echo [21] Set Power Plan to High Performance
+echo [5] Optimize Virtual Memory
+echo [6] Disable Windows Automatic Updates
+echo [7] Disable Windows Search Service
+echo [8] Disable Visual Effects
+echo [9] Increase TCP Connections
+echo [10] Disable Hibernation
+echo [11] Turn Off Windows Defender Real-Time Protection !!! NOT RECOMMEND !!!
+echo [12] Disable Windows Error Reporting
+echo [13] Disable USB Autorun
+echo [14] Disable Windows Store
+echo [15] Speed Up Folder Browsing
+echo [16] Optimize Internet Connection (TCP)
+echo [17] Speed Up Boot Time
+echo [18] Disable Task Scheduler
+echo [19] Disable UAC
+echo [20] Set Power Plan to High Performance
 echo.
 echo [0] Back to Main Menu
 echo ==============================
 set /p choice4="Choose an option to perform: "
 
 if "%choice4%"=="1" goto backup_registry
-if "%choice4%"=="2" goto disable_defender
+
+if "%choice4%"=="2" (
+    echo WARNING: Disabling Windows Defender is NOT RECOMMENDED.
+    set /p confirm="Are you sure you want to proceed? (Y/N): "
+    if /i "%confirm%"=="Y" goto disable_defender
+    goto menu4
+)
+
 if "%choice4%"=="3" goto disable_telemetry
 if "%choice4%"=="4" goto disable_cortana
-if "%choice4%"=="5" goto disable_restore
-if "%choice4%"=="6" goto optimize_virtual_memory
-if "%choice4%"=="7" goto disable_updates
-if "%choice4%"=="8" goto disable_search_service
-if "%choice4%"=="9" goto disable_visual_effects
-if "%choice4%"=="10" goto increase_tcp_connections
-if "%choice4%"=="11" goto disable_hibernation
-if "%choice4%"=="12" goto turn_off_defender_realtime
-if "%choice4%"=="13" goto disable_error_reporting
-if "%choice4%"=="14" goto disable_usb_autorun
-if "%choice4%"=="15" goto disable_store
-if "%choice4%"=="16" goto speed_up_folder_browsing
-if "%choice4%"=="17" goto optimize_internet_connection
-if "%choice4%"=="18" goto speed_up_boot_time
-if "%choice4%"=="19" goto disable_task_scheduler
-if "%choice4%"=="20" goto disable_uac
-if "%choice4%"=="21" goto set_power_plan
+if "%choice4%"=="5" goto optimize_virtual_memory
+if "%choice4%"=="6" goto disable_updates
+if "%choice4%"=="7" goto disable_search_service
+if "%choice4%"=="8" goto disable_visual_effects
+if "%choice4%"=="9" goto increase_tcp_connections
+if "%choice4%"=="10" goto disable_hibernation
+
+if "%choice4%"=="11" (
+    echo WARNING: Turning off Windows Defender Real-Time Protection is NOT RECOMMENDED.
+    set /p confirm="Are you sure you want to proceed? (Y/N): "
+    if /i "%confirm%"=="Y" goto turn_off_defender_realtime
+    goto menu4
+)
+
+if "%choice4%"=="12" goto disable_error_reporting
+if "%choice4%"=="13" goto disable_usb_autorun
+if "%choice4%"=="14" goto disable_store
+if "%choice4%"=="15" goto speed_up_folder_browsing
+if "%choice4%"=="16" goto optimize_internet_connection
+if "%choice4%"=="17" goto speed_up_boot_time
+if "%choice4%"=="18" goto disable_task_scheduler
+if "%choice4%"=="19" goto disable_uac
+if "%choice4%"=="20" goto set_power_plan
 if "%choice4%"=="0" goto menu
 
 :backup_registry
@@ -491,12 +503,6 @@ if %errorlevel% neq 0 (
     pause
     exit /b
 )
-
-echo Disabling System Restore...
-reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\SystemRestore" /v "DisableConfig" /t REG_DWORD /d 1 /f
-echo System Restore disabled.
-pause
-goto menu4
 
 :optimize_virtual_memory
 
